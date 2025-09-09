@@ -13,33 +13,76 @@ https://drive.google.com/file/d/1WS7YL0ssosh2ED-uGBiuO-gVBhj-noIk/view?usp=drive
 https://www.kaggle.com/datasets/jangedoo/utkface-new
 
 
-Senior Citizen Detector
-Problem Statement
-Classify individuals as senior citizens (age ≥ 60) or non-senior based on facial images. This supports applications like demographic analysis, healthcare targeting, or age-specific services, addressing challenges in age detection across diverse facial features.
-Dataset
+# 👵👴 Senior Citizen Detector  
 
-Source: UTKFace dataset (~23,705 facial images with age, gender, ethnicity labels).
-Preprocessing: Images resized to 128x128, normalized to [0,1]. Binary labels: senior (age ≥ 60) or non-senior.
-Classes: Binary (senior: ~10% of data, non-senior: ~90%).
-Download: Kaggle UTKFace.
-Size: ~1GB uncompressed.
+## 📌 Problem Statement  
+Classify individuals as **senior citizens (age ≥ 60)** or **non-senior** based on facial images.  
 
-Methodology
+This supports applications such as:  
+- 📊 Demographic analysis  
+- 🏥 Healthcare targeting  
+- 🎯 Age-specific services  
 
-Data Loading & Preprocessing: Load UTKFace images via OpenCV, extract age from filenames, label as senior (1) if age ≥ 60, else non-senior (0). Use a custom Keras Sequence for batch loading.
-Model: Custom CNN with 3 convolutional layers, max-pooling, and dense layers.
-Input: 128x128x3 images.
-Output: Softmax for 2 classes.
-Optimizer: Adam (lr=0.001).
-Loss: Categorical Crossentropy.
-Metrics: Accuracy.
+The challenge lies in **accurate age detection** across diverse facial features.  
 
+---
 
-Training: 80/20 train-test split, 10 epochs, batch size 32.
-Evaluation: Accuracy and confusion matrix on test set.
-Tools: TensorFlow/Keras, OpenCV, NumPy, Scikit-learn.
+## 📂 Dataset  
 
-Results
+- **Source:** [UTKFace Dataset](https://www.kaggle.com/datasets/jangedoo/utkface-new) (~23,705 images with age, gender, ethnicity).  
+- **Preprocessing:**  
+  - Images resized → `128x128`  
+  - Normalized → `[0,1]`  
+  - Binary labels:  
+    - ✅ Senior (`1`) → Age ≥ 60  
+    - ❌ Non-Senior (`0`) → Age < 60  
+- **Class Distribution:**  
+  - Senior → ~10%  
+  - Non-Senior → ~90%  
+- **Size:** ~1 GB (uncompressed).  
+
+---
+
+## 🛠 Methodology  
+
+### 🔹 Data Loading & Preprocessing  
+- Load UTKFace images using **OpenCV**.  
+- Extract **age** from filenames.  
+- Label: `1` if age ≥ 60, else `0`.  
+- Implemented using a **custom Keras Sequence** for efficient batch loading.  
+
+### 🔹 Model Architecture (CNN)  
+- **Input:** `128x128x3` facial image  
+- **Layers:**  
+  - 3️⃣ Convolutional Layers + ReLU  
+  - 🌀 Max-Pooling layers  
+  - 🔗 Dense layers  
+- **Output:** Softmax (2 classes → Senior / Non-Senior)  
+- **Optimizer:** Adam (`lr = 0.001`)  
+- **Loss:** Categorical Crossentropy  
+- **Metrics:** Accuracy  
+
+### 🔹 Training  
+- Train/Test Split → **80/20**  
+- Epochs → **10**  
+- Batch Size → **32**  
+
+### 🔹 Evaluation  
+- ✅ Accuracy  
+- ✅ Confusion Matrix (via Scikit-learn)  
+
+---
+
+## ⚙ Tools & Libraries  
+- 🧠 TensorFlow / Keras  
+- 👁 OpenCV  
+- 🔢 NumPy  
+- 📊 Scikit-learn  
+
+---
+
+✨ This project demonstrates a **binary classification model** for **senior citizen detection** using facial images.  
+
 
 Accuracy: ~90% on test set (inferred from typical UTKFace age classification results).
 Challenges: Class imbalance (fewer seniors); could improve with oversampling or weighted loss.
